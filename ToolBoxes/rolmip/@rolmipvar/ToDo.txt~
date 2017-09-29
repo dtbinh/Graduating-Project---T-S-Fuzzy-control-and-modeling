@@ -1,0 +1,6 @@
+- Criar um método para recuperar os expoentes das variáveis
+- Calcular o coeficiente que acompanha um expoente dado (Exemplo: A([0 1],[1 1]))
+- Fork
+- Fazer um equivalente ao affine2poly
+
+
