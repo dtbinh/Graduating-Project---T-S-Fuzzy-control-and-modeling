@@ -40,7 +40,7 @@ for i = 1:n_alpha
     Pi_{i} = sdpvar(3,3,'symmetric');
     Pi{i} = {alpha, theta, gamma, Pi_{i}};
 end
-P = rolmipvar(Pi,'P', [n_alpha n_theta n_gamma], [1 0 0]);
+poly_P = rolmipvar(Pi,'P', [n_alpha n_theta n_gamma], [1 0 0]);
 
 alpha = zeros(1, n_alpha);
 theta = zeros(1, n_theta);
@@ -67,7 +67,7 @@ for i = 1:n_alpha
 end
 X_ = rolmipvar(Xi, 'X', [n_alpha n_theta n_gamma], [1 0 0]);
 
-LMIs = [ [A'*P + P*A + Q*J*A + X_* ones(16,3)'*J*A + A'*J'*ones(16,3)*X_']< 0];
+LMIs = [ [A'*poly_P + poly_P*A + Q*J*A + X_* ones(16,3)'*J*A + A'*J'*ones(16,3)*X_']< 0];
 
 poly = polytope(x_k');
 [H,K] = double(poly);
@@ -77,9 +77,20 @@ for k = 1:q
     b_k = [b_k (H(k, :)/K(k))'];
 end
 [r, c] = size(b_k');
-LMIs = [LMIs, [ones(max(r, c), max(r, c)) b_k' ;b_k P] >=0];
+LMIs = [LMIs, [ones(max(r, c), max(r, c)) b_k' ;b_k poly_P] >=0];
 
-solvesdp(LMIs,[]);
+sol = solvesdp(LMIs,[],sdpsettings('verbose',0,'solver','sedumi'));
+
+% retrieving the minimal primal residual
+p=min(checkset(LMIs));
+display(p);
+
+%capturing the solutions (if ones exist)
+maxViolation = 1e-7; %minimization problem
+%maxViolation = 0;   %factibility problem
+if p  > -maxViolation %adopted precision for the minimum primal residual
+    output.P = double(poly_P);
+end
 
 end
 
