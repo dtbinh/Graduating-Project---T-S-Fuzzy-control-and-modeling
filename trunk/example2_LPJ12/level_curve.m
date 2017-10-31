@@ -4,8 +4,11 @@ function level_curve(P, color)
     gamma=1;
 
     for i = 1:length(P)
-        Pi = P{i}{1};
-        
+        if length(P) > 1
+            Pi = P{i}{1};
+        else
+            Pi = P{i};
+        end
         %a = Pi(1,1);
         b = Pi(1,2); % = Pi(2,1);
         c = Pi(2,2);

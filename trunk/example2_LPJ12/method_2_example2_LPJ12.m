@@ -35,10 +35,11 @@ pmin = min(checkset(LMIs));
 display(pmin)
 maxViolation = 1e-7; %minimization problem
 if sum(p > -maxViolation)
-	msgbox 'Stable  (method 4 + set enlargement')'
+	msgbox 'Stable  (method 2')'
     output.P = double(poly_P);
+    P_n = {};
     P_n{1} = output.P;
-    level_curve(P_n, 'y');
+    level_curve(P_n, 'r');
 else
-    msgbox 'Not stable (method 4 + set enlargement)'
+    msgbox 'Not stable (method 2)'
 end
