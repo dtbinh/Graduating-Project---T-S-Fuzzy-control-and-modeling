@@ -1,7 +1,18 @@
-function LMIs = Theorem06(Ai, Pi, n)
+function LMIs = Theorem06(A, Pi, n, xi, h, x1);
 
-X = rolmipvar(n,n,'X','full',n, 0);
-Xi = X(0);
+for i = 1:n
+    dh(i) = diff(h(i));
+end
+
+points = 100;
+x_range = linspace(xi(1), xi(2), points);
+syms y;
+for i = 1:points
+    for j = 1:n
+        s = vpasolve([y == dh(j), x1 == x_range(i)]);
+        phi_i(i,j) = abs(double(s.y));
+    end
+end
 
 LMIs = [];
 
@@ -10,29 +21,20 @@ for i = 1:n
     LMIs = [LMIs, Pi{i} > 0];
 end
 
-% Pi = X > 0
+% Pi + X >= 0
+P_phi = 0;
+X = sdpvar(n, n, 'symmetric');
 for i = 1:n
-    LMIs = [LMIs, Pi{i} + Xi > 0];
+    LMIs = [LMIs, Pi{i} + X >= 0];
+    phi(i) = max(phi_i(:,i));
+    P_phi = P_phi + phi(i) * (Pi{i} + X);
 end
 
+% P_phi + (1/2) * (Ai'*Pj + Pj*Ai +Aj'*Pi + Pi*Aj) <= 0
 for i = 1:n
-    P_phi_i(i) = Pi{i} + Xi;
-    alpha = zeros(1, n);
-    gamma = zeros(1, n);
-    gamma(i) = 1;
-    P_{i} = {alpha, gamma, P_phi_i{i}};
-end
-P_phi = rolmipvar(P_, 'P_phi', [n n], [0 1]);
-
-for i = 1: n
-    alpha_i = zeros(1, n);
-    alpha_i(i) = 1;
     for j = 1:n
-        alpha_j = zeros(1, n);
-        alpha_j(j) = 1;
-        
+        LMIs = [LMIs, ]
     end
 end
 
 end
-
