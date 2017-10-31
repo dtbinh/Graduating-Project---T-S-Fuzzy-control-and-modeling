@@ -1,4 +1,4 @@
-function LMIs = Theorem06(A, Pi, n, xi, h, x1);
+function LMIs = Theorem06(A, Pi, n, xi, h, x1)
 
 for i = 1:n
     dh(i) = diff(h(i));
@@ -33,7 +33,7 @@ end
 % P_phi + (1/2) * (Ai'*Pj + Pj*Ai +Aj'*Pi + Pi*Aj) <= 0
 for i = 1:n
     for j = 1:n
-        LMIs = [LMIs, ]
+        LMIs = [LMIs, P_phi + (1/2) * (A(:, :, i)'*Pi{j} + Pi{j}*A(:, :, i) +A(:, :, j)'*Pi{i} + Pi{i}*A(:, :, j)) <= 0];
     end
 end
 
