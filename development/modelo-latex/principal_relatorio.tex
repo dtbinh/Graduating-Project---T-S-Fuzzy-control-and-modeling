@@ -1,0 +1,214 @@
+% Classe default, de acordo com o modelo:
+\documentclass[11pt,a4paper,openright,titlepage,oneside]{book}
+
+% Classe alternativa, apropriada para impressão frente-verso. Inclui páginas em branco
+% de forma que capítulos sempre tenham início na página à direita:
+% \documentclass[11pt,a4paper,openright,titlepage]{book}
+
+% Pacotes
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[thmmarks,amsmath]{ntheorem}%\usepackage{amsthm}
+\usepackage{boxedminipage}
+\usepackage{geometry}
+\usepackage{theorem}
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\usepackage{ifthen}
+\usepackage{url}
+\usepackage{afterpage}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{rotating}
+\usepackage{makeidx}
+\usepackage{indentfirst}
+%\usepackage{epstopdf} %Allows compile pdftex documents with eps figs.
+
+% Escolher um dos seguintes formatos:
+%\usepackage{ft1unb} % segue padrão de fonte Times
+\usepackage{ft2unb} % segue padrão de fontes do Latex
+
+\makeindex
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Compilações parciais: com o comando abaixo, selecione apenas os capitulos
+% que deseja compilar. Por exemplo, veja o que acontece se descomentar a
+% linha abaixo:
+% \includeonly{resumos,cap_Experimentos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Documento principal
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\setcounter{secnumdepth}{3} % numeração de seções até nível 3
+\setcounter{tocdepth}{2} % numeração de seções no sumário até nível 2
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Capa e contra-capa
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Grau pretendido e o tipo de monografia. Alguns exemplos seguem abaixo. Se o seu for algum deles, descomente-o. Em geral, o grau e o tipo de monografia associado estão na mesma linha.
+\grau{Doutor em Engenharia Elétrica} \tipodemonografia{TESE DE DOUTORADO}
+%\grau{Mestre em Engenharia Elétrica} \tipodemonografia{DISSERTAÇÃO DE MESTRADO}
+%\grau{Engenheiro Eletricista} \tipodemonografia{TRABALHO DE GRADUAÇÃO}
+
+% Os comandos a seguir servem para definir o título do trabalho. Para evitar 
+% que o latex defina automaticamente a quebra de linha, foram definidos um comando por linha. 
+% Desta forma o autor define como quer que o título seja dividio em várias linhas. 
+% O exemplo abaixo é para um título que ocupa três linhas. Observe que mesmo com a linha
+% 4 não sendo utilizada, o comando \titulolinhaiv é chamado.
+\titulolinhai{MODELO PARA REDAÇÃO DE MONOGRAFIAS}
+\titulolinhaii{TESE DE DOUTORADO, DISSERTAÇÃO}
+\titulolinhaiii{DE MESTRADO E TRABALHO DE GRADUAÇÃO}
+\titulolinhaiv{}
+
+% Os nomes dos autores são definidos pelos comandos \autori (autor 1) e \autorii (autor 2).
+% Para trabalhos com apenas um autor, deve-se usar \autorii{} para que não apareça 
+% um nome para segundo autor.
+\autori{Nome do Autor 1}
+\autorii{Nome do Autor 2}
+%\autorii{} % descomente esta linha se não houver segundo autor.
+\autoriii{Nome do Autor 3}
+\autoriii{} % descomente esta linha se não houver terceiro autor.
+
+% Os nomes dos membros da banca são definidos a seguir. Pode-se ter até 5 membros da banca, 
+% numerados de i a v (algarismos romanos).
+% Para trabalhos com apenas um autor, deve-se usar \autorii{} para que não apareça 
+% um nome para segundo autor. É incubência do usuário definir no argumento dos comandos a 
+% afiliação do membro da banca, assim como sua posição (se for orientador ou co-orientador). 
+% Os nomes definidos pelos comandos abaixo aparecem na ordem de i a v.
+\membrodabancai{Prof. Fulano de Tal 1, ENE/UnB}
+\membrodabancaifuncao{Orientador}
+\membrodabancaii{Prof. Fulano de Tal 2, ENE/UnB}
+\membrodabancaiifuncao{Co-orientador}
+\membrodabancaiii{Prof. Fulano de Tal 3, EESC/USP}
+\membrodabancaiiifuncao{Examinador externo}
+\membrodabancaiv{Prof. Fulano de Tal 4, ENE/UnB}
+\membrodabancaivfuncao{Examinador interno}
+\membrodabancav{}
+\membrodabancavfuncao{}
+
+% data de defesa: mês e ano.
+\mes{março}
+\ano{2006}
+
+% Comandos para criar a capa e a página de assinaturas.
+\capaprincipal
+\capaassinaturas
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dedicatória 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+
+% Texto de dedicatória do primeiro autor
+\dedicatoriaautori{Dedicatória do autor 1}
+
+% Texto de dedicatória do segundo autor. Caso não tenha um segundo autor, este texto não 
+% será mostrado
+\dedicatoriaautorii{Dedicatória do autor 2}
+
+% Texto de dedicatória do terceiro autor. Caso não tenha um segundo autor, este texto não 
+% será mostrado
+\dedicatoriaautoriii{Dedicatória do autor 3}
+
+% Comando para criar a página de dedicatória
+\dedicatoria
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Agradecimentos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Texto de agradecimentos do primeiro autor
+\agradecimentosautori{A inclusão desta seção de agradecimentos é opcional e fica à critério do(s) autor(es), que caso deseje(em) inclui-la deverá(ao) utilizar este espaço, seguindo está formatação.}
+
+% Texto de agradecimentos do segundo autor. Caso não tenha um segundo autor, este texto não 
+% será mostrado
+\agradecimentosautorii{A inclusão desta seção de agradecimentos é opcional e fica à critério do(s) autor(es), que caso deseje(em) inclui-la deverá(ao) utilizar este espaço, seguindo está formatação.}
+
+% Texto de agradecimentos do segundo autor. Caso não tenha um terceiro autor, este texto não 
+% será mostrado
+\agradecimentosautoriii{A inclusão desta seção de agradecimentos é opcional e fica à critério do(s) autor(es), que caso deseje(em) inclui-la deverá(ao) utilizar este espaço, seguindo está formatação.}
+
+% Comando para criar a página de agradecimentos
+\agradecimentos
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Resumo: arquivo resumo.tex editável no Scientific Word
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{resumos}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Listas de conteúdo, figuras e tabelas.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sumario
+\listadefiguras
+\listadetabelas
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lista de simbolos.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{simbolos}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Corpo principal
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+\setcounter{page}{1} \pagenumbering{arabic} \pagestyle{plain}
+
+% *** Introducao ***
+\include{cap_Introducao}
+
+% *** Revisao Bibliografica ***
+\include{cap_RevisaoBibliografica}
+
+% *** Desenvolvimento ***
+\include{cap_Desenvolvimento}
+
+% *** Resultados Experimentais ***
+\include{cap_Experimentos}
+
+% *** Conclusões
+\include{cap_Conclusoes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Referências bibliográficas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{abnt-num} % use este estilo para ABNT numérico
+%\bibliographystyle{abnt-alf} % use este estilo para ABNT alfa-numérico
+\renewcommand{\bibname}{REFERÊNCIAS BIBLIOGRÁFICAS}
+\addcontentsline{toc}{chapter}{REFERÊNCIAS BIBLIOGRÁFICAS}
+\bibliography{relatorio}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Anexos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\anexos
+\makeatletter % não retirar estes comandos
+\renewcommand{\@makechapterhead}[1]{%
+  {\parindent \z@ \raggedleft \setfontarial\bfseries 
+        \LARGE \thechapter. \space\space 
+    \uppercase{#1}\par
+    \vskip 40\p@
+  }
+}
+\makeatother
+
+% *** Anexo I: Diagramas esquemáticos ***
+\include{anexo_Esquematicos}
+\refstepcounter{noAnexo}
+
+% *** Anexo II: Descrição do CD ***
+\include{anexo_CD}
+\refstepcounter{noAnexo}
+
+% Acrescente mais anexos conforme julgar necessário.
+\end{document}
+

@@ -1,0 +1,59 @@
+%TCIDATA{LaTeXparent=0,0,relatorio.tex}
+                      
+
+\chapter{Desenvolvimento}\label{CapDesenvolvimento}
+
+% Resumo opcional. Comentar se não usar.
+\resumodocapitulo{Resumo opcional.}
+
+\section{Introdu\c{c}\~{a}o}
+
+Na introdu\c{c}\~{a}o dever\'{a} ser feita uma descri\c{c}\~{a}o geral da
+metodologia que foi seguida para o desenvolvimento. A seguir, \'{e} feita a
+desci\c{c}\~{a}o do sistema desenvolvido. 
+
+Deve-se ressaltar que equa\c{c}\~{o}es fazem parte do texto, devendo receber pontua\c{c}\~{a}o apropriada e ser numerada. Alguns exemplos s\~{a}o mostrados na se\c{c}\~{a}o \ref
+{SecClassificador}.
+
+\section{Arquitetura geral}
+
+\section{Classificador estat\'{i}stico de padr\~{o}es}\label{SecClassificador}
+
+O classificador autom\'{a}tico de padr\~{o}es utiliza o princ\'{i}pio da
+menor dist\^{a}ncia no processo de associa\c{c}\~{a}o de dados. Assim, sendo 
+$\mathbf{x}$ o vetor de caracter\'{i}sticas extra\'{i}das de uma imagem e $%
+\mathbf{P}_{\mathbf{x}}$ sua matriz de covari\^{a}ncias respectiva,
+utiliza-se 
+\begin{equation}
+d_{i}=(\mathbf{x}-\mathbf{p}_{i})^{T}(\mathbf{P}_{\mathbf{x}}+\mathbf{P}_{%
+\mathbf{p}_{i}})^{-1}(\mathbf{x}-\mathbf{p}_{i})  \label{EqDistMahalanobis}
+\end{equation}
+como m\'{e}trica para a dist\^{a}ncia estat\'{i}stica de  $\mathbf{x}$ e um
+padr\~{a}o de caracter\'{i}sticas $\mathbf{p}_{i}$ e matriz de covari\^{a}%
+ncias $\mathbf{P}_{\mathbf{p}_{i}}$. Esta m\'{e}trica \'{e} conhecida tamb%
+\'{e}m pela denomina\c{c}\~{a}o ``dist\^{a}ncia de Mahalanobis''. A dist\^{a}%
+ncia definida pela Eq. (\ref{EqDistMahalanobis}) segue distribui\c{c}\~{a}o $%
+\chi _{n}^{2}$, em que $n$ \'{e} a dimens\~{a}o da base do vetor $\mathbf{x}$%
+. Assim sendo, no caso espec\'{i}fico de $n=3$, o padr\~{a}o associado ao
+vetor $\mathbf{x}$ \'{e} dito casado com o padr\~{a}o $\mathbf{p}_{i}$ com $%
+5\%$ de margem de erro se 
+\begin{equation}
+d_{i}\leq 7,815.
+\end{equation}
+
+A seguir é mostrado como o modelo Latex apresenta os comandos $\backslash$section $\backslash$subsection e $\backslash$subsubsection. Por questão de estilo, o texto deve ser organizado de modo a se evitar o uso de $\backslash$subsubsection. 
+
+\section{Seção}
+
+Meu texto da seção.
+
+\subsection{Sub-seção}
+
+Meu texto da sub-seção.
+
+\subsubsection{Sub-sub-seção}
+
+Meu texto da sub-sub-seção.
+
+Se necessário, use notas de rodapé \footnote{Essa é uma nota de rodapé.}
+

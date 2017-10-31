@@ -1,0 +1,35 @@
+%TCIDATA{LaTeXparent=0,0,relatorio.tex}
+                      
+\chapter{Resultados Experimentais}\label{CapExperimentos}
+
+% Resumo opcional. Comentar se não usar.
+\resumodocapitulo{Resumo opcional.}
+
+\section{Introdução}
+
+Na introdução deverá ser feita uma descrição geral dos experimentos realizados. 
+
+Para cada experimentação apresentada, descrever as condições de experimentação (e.g., instrumentos, ligações específicas, configurações dos programas), os resultados obtidos na forma de tabelas, curvas ou gráficos. Por fim, tão importante quando ter os resultados é a análise que se faz deles. Quando os resultados obtidos não forem como esperados, procurar justificar e/ou propor alteração na teoria de forma a justificá-los.
+
+\section{Avaliação do algoritmo de resolução da equação algébrica de Riccati}
+
+O algoritmo proposto para solução da equação algébrica de Riccati foi avaliado em diferentes máquinas. Os tempos de execução são mostrados na Tabela \ref{TabDesempenho}. Nesta tabela, os algoritmos propostos receberam a denominação $CH$ para Chandrasekhar e $CH+LYAP$ para Chandrasekhar com Lyapunov. As implementações foram feitas em linguagem \textit{script} MATLAB.
+
+\begin{table}[tbp]
+\caption{Tempos de execução em segundos para diferentes máquinas}
+\label{TabDesempenho}
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+\hline
+\textbf{Algoritmo} & \textbf{Laptop} & \textbf{Desktop} & \textbf{Desktop} & 
+\textbf{Laptop} \\ 
+& \textbf{1.8 GHz} & \textbf{PIII 850 MHz} & \textbf{MMX 233} & \textbf{600
+MHz} \\ \hline
+Matlab ARE & 649,96 & 1.857,5 & 7.450,5 & 9.063,9 \\ 
+$CH$ & 259,44 & 606,4 & 2.436,5 & 2.588,5 \\ 
+$CH+LYAP$ & 357,86 & 952,9 & 3.689,2 & 3.875,0 \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Observa-se que o algoritmo $CH+LYAP$ apresenta tempos de execução superiores com relação ao algoritmo $CH$. Entretanto, era esperado que o algoritmo $CH$ fosse mais rápido. Este resultado se justifica pelo fato de o algoritmo $CH$ fazer uso de funções embutidas do MATLAB. Já o aloritmo $CH+LYAP$ faz uso também de funções \textit{script} externas, aumentando bastante seu tempo computacional.

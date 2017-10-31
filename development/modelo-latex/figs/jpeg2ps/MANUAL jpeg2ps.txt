@@ -1,0 +1,23 @@
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+jpeg2ps - convert JPEG compressed images to PostScript Level 2
+
+jpeg2ps is available from http://www.ifconnection.de/~tm
+and many other sites, notably CTAN mirrors.
+
+Usage Details
+=============
+jpeg2ps [options] file.jpg > file.eps
+
+-a       auto rotate feature
+-b       binary mode
+-h       hex mode (ASCIIHex encoding)
+-o name  output file name (as an alternative to output redirection)
+-p size  page size name. Known names are:
+         a0, a1, a2, a3, a4, a5, a6, b5, letter, legal, ledger, p11x17
+-q       quiet mode: suppress all informational messages
+-r dpi   resolution value (0 = read from file if possible)
+
+Example
+=============
+
+>> jpeg2ps -p a4 file.jpg > file.eps

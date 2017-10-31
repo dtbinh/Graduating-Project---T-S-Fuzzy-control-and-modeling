@@ -1,0 +1,21 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{1.42.2.1 }
+
+\bibitem{article:glofarelli:2001}
+\abntrefinfo{Golfarelli, Mario e Rizzi}{GOLFARELLI; MARIO; RIZZI}{2001}
+{GOLFARELLI, M.; MARIO, D.; RIZZI, S. Correction of dead-reckoning errors in
+  map building in map building for mobile robots.
+\emph{IEEE Transactions on Robotics and Automation}, v.~17, n.~1, p. 37--47,
+  February 2001.}
+
+\bibitem{inproc:duckett:2000}
+\abntrefinfo{Duckett, Marsland e Shapiro}{DUCKETT; MARSLAND; SHAPIRO}{2000}
+{DUCKETT, T.; MARSLAND, S.; SHAPIRO, J. Learning globally consistent maps by
+  relaxation. In:  \emph{IEEE International Conference on Robotics and
+  Automation}. [S.l.: s.n.], 2000. p. 3841--3846.}
+
+\end{thebibliography}

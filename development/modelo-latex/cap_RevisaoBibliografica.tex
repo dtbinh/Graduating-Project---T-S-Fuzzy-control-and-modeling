@@ -1,0 +1,41 @@
+%TCIDATA{LaTeXparent=0,0,relatorio.tex}
+                      
+\chapter{Revisão Bibliográfica}\label{CapRevisaoBibliografica}
+
+% Resumo opcional. Comentar se não usar.
+\resumodocapitulo{Resumo opcional.}
+
+\section{Introdução}
+
+Nem todos os trabalhos de graduação têm um capítulo específico para revisão bibliográfica. De fato, um capítulo específico para revisão bibliográfica se aplica para trabalhos em que o a teoria empregada não é coberta por disciplinas do curso. Caso contrário, uma breve revisão pode ser feita no capítulo \ref{CapIntro}. 
+
+Não esquecer de fazer citações à bibliografia. No latex, somente são inseridos na bibliografia aqueles trabalhos que foram citados \cite{article:glofarelli:2001}. Ou você pode citar assim \cite{article:glofarelli:2001,inproc:duckett:2000}, no caso de citações múltiplas. Entretanto, citações não são de exclusividade deste capítulo. Em outros capítulos, citações devem ser feitas quando for pertinente.
+
+Na seção a seguir, é mostrado um exemplo com figuras.
+
+\section{Técnicas de acionamentos de motores de corrente contínua}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{figs/atuador_malha_de_controle.eps}
+\caption{O atuador na malha de controle}
+\label{FigMalhaDeControle}
+\end{figure}
+
+Um dos elementos mais importantes na malha de controle é o atuador. Como mostrado na Fig. \ref{FigMalhaDeControle}, este elemento é o elo de conexão entre a saída do controlador e a entrada do processo. No caso específico deste tratablho, o processo é um motor de corrente contínua. 
+
+Deve ser observado aque toda figura deve ser referenciada no texto. A figura deve estar posicionada no começo ou no final da página, e sempre na mesma página da primeira citação ou em páginas seguintes. Nunca colocar a figura em páginas anteriores à da primeira citação. No caso de múltiplos gráficos em uma mesma figura, pode-se usar o pacote \texttt{subfigure}, como mostrado no parágrafo seguinte.  
+
+A Figura \ref{FigEstagios} apresenta alguns dos mais usados estágios de potência de acionadores lineares. Dentre eles, o mais simples é o estágio classe B (Fig. \ref{FigEstagios}(a)). Neste estágio, apenas um dos transistores conduz por vez. Entretanto, este circuito apresenta forte não-linearidade devido a um intervalo de tensões ${v_e}$ em que nenhum dos transistores opera em modo ativo. As soluções existentes para este minimizar este problema consistem em fazer com que ambos os transistores conduzam sempre. Alguns exemplos são mostrados nas Figs. \ref{FigEstagios}(b-c). Apesar de ainda apresentarem não-linearidade e curva característica dependente da carga, estes problemas praticamente desaparecem se as etapas de potência estiverem em uma malha fechada com alto ganho. 
+
+\begin{figure}[tb]
+\centering
+\mbox{
+\subfigure[Classe B]{\includegraphics[width=0.35\textwidth]{figs/atuador_classe_B.eps}}\quad\quad
+\subfigure[Classe AB com diodos]{\includegraphics[width=0.4\textwidth]{figs/atuador_classe_AB.eps}}}
+\subfigure[Classe AB com multiplicador de $V_{BE}$]{\includegraphics[width=0.45\textwidth]{figs/atuador_classe_AB_multVBE.eps}
+}
+\caption{Estágios de potência comumente usados em atuadores lineares}
+\label{FigEstagios}
+\end{figure}
+
