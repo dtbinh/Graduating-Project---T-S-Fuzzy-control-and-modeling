@@ -42,8 +42,9 @@ maxViolation = 1e-7; %minimization problem
 if p  > -maxViolation %adopted precision for the minimum primal residual
     msgbox 'Stable (method 1)';
     output.P = double(P);
-    P_n = verticesP(output.P, n_alpha, n_theta, n_gamma);
-    level_curve(P_n, 'y');
+    P_n = {};
+    P_n{1} = output.P;
+    level_curve(P_n, 1, 'y');
 else
     msgbox 'Not stable (method 1)';
 end

@@ -39,7 +39,7 @@ if sum(p > -maxViolation)
     output.P = double(poly_P);
     P_n = {};
     P_n{1} = output.P;
-    level_curve(P_n, 'r');
+    level_curve(P_n, 1, 'r');
 else
     msgbox 'Not stable (method 2)'
 end

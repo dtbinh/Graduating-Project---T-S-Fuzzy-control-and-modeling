@@ -1,5 +1,6 @@
-function [LMIs, T] = theorem2(xi, P, LMIs, n_alpha, n_theta, n_gamma, n)
+function [LMIs, T, gamma] = theorem2(xi, P, LMIs, n_alpha, n_theta, n_gamma, n)
 
+mu = [max(xi) max(xi)];
 ns = n;
 diagonal = zeros(ns,2^ns);
 for i = 1:ns
@@ -32,7 +33,7 @@ T = rolmipvar(n,n,'T','full',[n_alpha n_theta n_gamma], [0 0 0]);
 LMIs = [LMIs, [T P;P P]>=0];
 
 for i = 1:n
-        MatQ = [P*xi(i) In(i,:)'; In(i,:) gamma*xi(i)];
+        MatQ = [P*mu(i) In(i,:)'; In(i,:) gamma*mu(i)];
         LMIs = [LMIs, MatQ >= 0];
 end
 

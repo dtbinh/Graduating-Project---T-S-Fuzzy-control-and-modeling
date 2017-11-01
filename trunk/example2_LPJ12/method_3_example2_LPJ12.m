@@ -37,7 +37,7 @@ if sum(p > -maxViolation)
         alpha(i) = 1;
         P_n{i} = output.P(alpha);
     end
-    level_curve(P_n, 'm');
+    level_curve(P_n, 1, 'm');
 else
     msgbox 'Not stable (method 3)'
 end

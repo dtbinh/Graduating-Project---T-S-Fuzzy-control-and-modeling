@@ -1,9 +1,7 @@
-function level_curve(P, color)
+function level_curve(P, gamma, color)
     %Plots the level curve V(x) = x'*P*x = gamma, given P and gamma.
         
-    gamma=1;
-
-    for i = 1:length(P)
+	for i = 1:length(P)
         if length(P) > 1
             Pi = P{i}{1};
         else
