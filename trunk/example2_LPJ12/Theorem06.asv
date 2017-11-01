@@ -1,4 +1,4 @@
-function LMIs = Theorem06(LMIs, A, Pi, n, phi)
+function [LMIs, dh] = Theorem06(LMIs, A, Pi, n, xi, h, x1, x2)
 
 % Pi = Pi' > 0
 for i = 1:n
@@ -10,6 +10,7 @@ P_phi = 0;
 X = sdpvar(n, n, 'symmetric');
 for i = 1:n
     LMIs = [LMIs, Pi{i} + X >= 0];
+    phi(i) = max(phi_i(:,i));
     P_phi = P_phi + phi(i) * (Pi{i} + X);
 end
 

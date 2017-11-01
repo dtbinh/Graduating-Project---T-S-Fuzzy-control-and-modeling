@@ -1,6 +1,6 @@
 %clear all; clear; clc;
 
-[xi, A, x1, x2, h, n] = problem_definition();
+[xi, A, x1, x2, h, n] = problem_definition(20);
 
 x_k = StateVariablesVertices(xi);
 

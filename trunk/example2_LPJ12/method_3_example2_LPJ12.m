@@ -1,6 +1,6 @@
 clear all; clear; clc;
-
-[xi, A, x1, x2, h, n] = problem_definition();
+lambda = 20;
+[xi, A, x1, x2, h, n] = problem_definition(lambda);
 
 x_k = StateVariablesVertices(xi);
 
@@ -19,7 +19,9 @@ poly_P = rolmipvar(P_,'P', n, 1);
 
 LMIs = [];
 LMIs = [LMIs, poly_A'*poly_P + poly_P*poly_A <= 0];
-LMIs = [LMIs, Theorem06(A, Pi, n, xi, h, x1)];
+[dh, phi_max, phi_min] = determination_of_phi_range_and_diff_h(n, h, A, xi, x1, x2);
+
+LMIs = Theorem06(LMIs, A, Pi, n, phi_max);
 LMIs = LargestInvariantSetContainedInPolytope(LMIs, x_k, poly_P);
 [LMIs, crit] = EnlargementOfLargestInvariantSet(LMIs, poly_P);
 
@@ -37,7 +39,7 @@ if sum(p > -maxViolation)
         alpha(i) = 1;
         P_n{i} = output.P(alpha);
     end
-    level_curve(P_n, 1, 'm');
+%     level_curve(P_n, 1, 'm');
 else
     msgbox 'Not stable (method 3)'
 end
