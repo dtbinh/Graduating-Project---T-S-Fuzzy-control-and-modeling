@@ -1,4 +1,4 @@
-function plot_region(xi, n)
+function plot_region(xi, n, color)
 
 ns = n;
 diagonal = zeros(ns,2^ns);
@@ -22,7 +22,7 @@ end
 
 %plots the polytope that represents the limts of state variables.
 line([Chi(1,1);Chi(1,3);Chi(1,4);Chi(1,2);Chi(1,1)],[Chi(2,1);Chi(2,3);...
-      Chi(2,4);Chi(2,2);Chi(2,1)]);
+      Chi(2,4);Chi(2,2);Chi(2,1)], 'Color', color);
 
 
 end

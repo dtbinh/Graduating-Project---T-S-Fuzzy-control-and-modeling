@@ -15,8 +15,13 @@ for i = 1:n
 end
 poly_P = rolmipvar(P_,'P', n, 1);
 
-%xi = xi*0.7;
+plot_region(xi, n, 'red');
+xi = xi*0.7;
 [dh, phi_max, phi_min] = determination_of_phi_range_and_diff_h(n, h, A, xi, x1, x2);
+
+determination_of_phi_range_and_diff_h_level(n, h, A, 2*xi, x1, x2, phi_max);
+plot_region(xi, n, 'blue');
+
 LMIs = [];
 LMIs = Theorem06(LMIs, A, Pi, n, phi_max);
 x_k = StateVariablesVertices(xi);
@@ -37,7 +42,8 @@ if pmin > -maxViolation
         alpha(i) = 1;
         P_n{i} = output.P(alpha);
     end
-    level_curve(P_n, 1, 'm');
+    %level_curve(P_n, 1, 'm');
+    level_curve_v(P_n, 1, xi, h, 'black');
 else
     msgbox 'Not stable (method 3)'
 end
