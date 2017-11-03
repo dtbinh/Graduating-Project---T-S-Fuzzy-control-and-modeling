@@ -11,7 +11,7 @@ x_k = StateVariablesVertices(xi);
                                 fuzzy_TS_dinamic_Lyapunov_with_P_alpha(...
                                                 A, h(1), h(2), x1, x2, x_k);
 
-applyTheorem2 = true;
+applyTheorem2 = false;
 
 if (applyTheorem2 == false)
     % LMI (9)                                            
@@ -26,7 +26,8 @@ if (applyTheorem2 == false)
         msgbox 'Stable  (method 4 + set enlargement')'
         output.P = double(P);
         P_n = verticesP(output.P, n_alpha, n_theta, n_gamma);
-        level_curve(P_n, 1, 'g');
+        %level_curve(P_n, 1, 'g');
+        level_curve_v(P_n, 1, xi, h, 'g');
     else
         msgbox 'Not stable (method 4 + set enlargement)'
     end
@@ -49,7 +50,8 @@ else
         msgbox 'Stable  (method 4 (with theorem 2))'
         output.P = double(P);
         P_n = verticesP(output.P, n_alpha, n_theta, n_gamma);
-        level_curve(P_n, 1/double(gamma), 'b');
+%         level_curve(P_n, 1/double(gamma), 'r');
+        level_curve_v(P_n, 1/double(gamma), xi, h, 'r');
     else
         msgbox 'Not stable (method 4 (with theorem 2))'
     end

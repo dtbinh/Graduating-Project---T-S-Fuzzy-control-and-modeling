@@ -1,7 +1,8 @@
 clear all; clear; clc;
 
 lambda = 20;
-[xi, A, x1, x2, h, n] = problem_definition(lambda);
+[xi, A_fuzzy, x1, x2, h, n] = problem_definition(lambda);
+A = h(1)*A_fuzzy(:, :, 1) + h(2)*A_fuzzy(:,:,2);
 
 x_k = StateVariablesVertices(xi);
 

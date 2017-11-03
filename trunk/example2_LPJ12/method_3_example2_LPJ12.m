@@ -16,10 +16,10 @@ end
 poly_P = rolmipvar(P_,'P', n, 1);
 
 plot_region(xi, n, 'red');
-xi = xi*0.7;
+xi = xi*0.51;
 [dh, phi_max, phi_min] = determination_of_phi_range_and_diff_h(n, h, A, xi, x1, x2);
 
-determination_of_phi_range_and_diff_h_level(n, h, A, 2*xi, x1, x2, phi_max);
+determination_of_phi_range_and_diff_h_level(n, h, A, 2*xi, x1, x2, phi_max(1));
 plot_region(xi, n, 'blue');
 
 LMIs = [];

@@ -16,7 +16,7 @@ for k = 1:n
         for j=1:length(xx2)
             x1 = X1(i,j);
             x2 = X2(i,j);
-            hh(i,j) = subs(h(k));
+            hh(i,j) = eval(subs(h(k)));
         end
     end
     H{k} = hh;
