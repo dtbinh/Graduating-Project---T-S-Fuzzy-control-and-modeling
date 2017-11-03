@@ -20,7 +20,8 @@ function level_curve(P, gamma, color)
 
         %Calculo
         x1max=sqrt(c*gamma/dP);
-        x1=-x1max:1e-5:x1max;
+        steps = (2*x1max)/1e4;
+        x1=-x1max:steps:x1max;
         x2a=(-b*x1+sqrt(c*gamma-x1.^2*dP))/c;
         x2b=(-b*x1-sqrt(c*gamma-x1.^2*dP))/c;
 

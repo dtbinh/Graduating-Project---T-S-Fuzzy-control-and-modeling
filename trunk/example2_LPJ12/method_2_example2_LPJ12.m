@@ -1,25 +1,11 @@
-%clear all; clear; clc;
+clear all; clear; clc;
 
-% Let us consider a T-S fuzzy model with vertices
-% A1 = [-2 4; -1 -2]; A2 = [-2 4; -(1+lambda) -2]. With lambda = 20;
-% h1(z(t)) = alpha1(z(t)) = (1 + sin(x1(t)))/2;
-% h2(z(t)) = alpha2(z(t)) = 1 - alpha1(z(t));
-% C1 = {x(t) E R^n ||xi(t)| <= pi/2, i = 1, 2}.
-
-xi = [-pi/2; pi/2];
 lambda = 20;
-A1 = [-2 4; -1 -2];
-A2 = [-2 4; -(1+lambda) -2];
-syms x1 x2
-h1 = (1 + sin(x1))/2;
-h2 = 1 - h1;
+[xi, A, x1, x2, h, n] = problem_definition(lambda);
 
-% number of state variables
-n = 2;
 x_k = StateVariablesVertices(xi);
 
 % method 2) Fuzzy dynamics TS + Lyapunov method with P constant: LMIs (9)
-A = [A1 A2];
 poly_A = rolmipvar(A,'A',2,1);
 P = sdpvar(n,n,'symmetric');
 poly_P = rolmipvar(P,'P',2,0);
@@ -34,7 +20,7 @@ solvesdp(LMIs, crit, sdpsettings('solver', 'sedumi', 'verbose', 0));
 pmin = min(checkset(LMIs));
 display(pmin)
 maxViolation = 1e-7; %minimization problem
-if sum(p > -maxViolation)
+if pmin > -maxViolation
 	msgbox 'Stable  (method 2')'
     output.P = double(poly_P);
     P_n = {};

@@ -1,4 +1,4 @@
-%clear all; clear; clc;
+clear all; clear; clc;
 
 [xi, A, x1, x2, h, n] = problem_definition(20);
 
@@ -45,7 +45,7 @@ else
     pmin = min(checkset(LMIs));
     display(pmin)
     maxViolation = 1e-7;
-    if sum(p > -maxViolation)
+    if pmin > -maxViolation
         msgbox 'Stable  (method 4 (with theorem 2))'
         output.P = double(P);
         P_n = verticesP(output.P, n_alpha, n_theta, n_gamma);

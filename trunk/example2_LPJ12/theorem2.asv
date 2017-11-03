@@ -1,6 +1,5 @@
-function [LMIs, T, gamma] = theorem2(xi, P, LMIs, n_alpha, n_theta, n_gamma, n)
+function [LMIs, T, gamma] = theorem2(P, LMIs, n_alpha, n_theta, n_gamma, n)
 
-mu = [max(xi) max(xi)];
 In = eye(n);
 gamma = sdpvar(1,1,'symmetric');
 

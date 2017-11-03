@@ -2,8 +2,6 @@ clear all; clear; clc;
 lambda = 20;
 [xi, A, x1, x2, h, n] = problem_definition(lambda);
 
-x_k = StateVariablesVertices(xi);
-
 % method 3) Fuzzy dynamics TS + Lyapunov method with P(alpha)
 %           + Theorem06, MPS09 + LMIs (9)
 poly_A = rolmipvar(A,'A',2,1);
@@ -17,11 +15,11 @@ for i = 1:n
 end
 poly_P = rolmipvar(P_,'P', n, 1);
 
-LMIs = [];
-LMIs = [LMIs, poly_A'*poly_P + poly_P*poly_A <= 0];
+%xi = xi*0.7;
 [dh, phi_max, phi_min] = determination_of_phi_range_and_diff_h(n, h, A, xi, x1, x2);
-
+LMIs = [];
 LMIs = Theorem06(LMIs, A, Pi, n, phi_max);
+x_k = StateVariablesVertices(xi);
 LMIs = LargestInvariantSetContainedInPolytope(LMIs, x_k, poly_P);
 [LMIs, crit] = EnlargementOfLargestInvariantSet(LMIs, poly_P);
 
@@ -30,7 +28,7 @@ solvesdp(LMIs, crit, sdpsettings('solver', 'sedumi', 'verbose', 0));
 pmin = min(checkset(LMIs));
 display(pmin)
 maxViolation = 1e-7; %minimization problem
-if sum(p > -maxViolation)
+if pmin > -maxViolation
 	msgbox 'Stable  (method 3)'
     output.P = double(poly_P);
     P_n = {};
@@ -39,7 +37,7 @@ if sum(p > -maxViolation)
         alpha(i) = 1;
         P_n{i} = output.P(alpha);
     end
-%     level_curve(P_n, 1, 'm');
+    level_curve(P_n, 1, 'm');
 else
     msgbox 'Not stable (method 3)'
 end
